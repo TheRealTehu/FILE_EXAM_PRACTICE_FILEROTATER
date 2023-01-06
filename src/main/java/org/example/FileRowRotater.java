@@ -15,13 +15,15 @@ public class FileRowRotater {
         this.path = path;
     }
 
-    public void rotateRows() throws IOException {
+    public void rotateRows(){
         File file = new File(path);
         List<String> lines = new ArrayList<>();
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
                 lines.add(rotateLine(scanner.nextLine()));
             }
+        } catch (IOException e){
+            e.printStackTrace();
         }
 
         String newFilePath = getNewFilePath(path);
@@ -38,11 +40,12 @@ public class FileRowRotater {
         return builder.toString();
     }
 
-    private void saveToFile(String path, String text) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(path));
-        writer.write(text);
-
-        writer.close();
+    private void saveToFile(String path, String text){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))){
+            writer.write(text);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private String getNewFilePath(String path) {
