@@ -7,6 +7,7 @@ Szerencsére biztosan tudod, hogy minden sorod kezdőbetűje nagybetű volt, egy
 csak az ABC betűi valamint szóközök szerepelnek.
 
 **Példa:**
+
 | Eredeti | Elrontott |
 |---------|---------|
 | A szőlő finom | nomA szőlő fi |
@@ -19,6 +20,7 @@ soronként helyre forgatja, és egy új fájlba menti, melynek neve: <eredeti f�
 Pl.: dog.txt → dog.rotated.txt
 
 **Példák sorokra:**
+ 
 | Input fájl egy sora | Output fájl megfelelő sora |
 |-------------|----------|
 | asztalKerek | Kerekasztal |
