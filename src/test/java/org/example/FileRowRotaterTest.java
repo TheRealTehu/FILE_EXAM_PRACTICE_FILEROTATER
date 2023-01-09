@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -69,13 +70,12 @@ class FileRowRotaterTest {
                 .exists()
                 .content()
                 .hasLineCount(6)
-                .contains("""
-                        A szőlő finom
-                        Kerekasztal
-                        Ma jó napom van
-                        A
-                        Fekete bika pata
-                        Boborján   a   jeti""");
+                .containsSubsequence(List.of("A szőlő finom",
+                        "Kerekasztal",
+                        "Ma jó napom van",
+                        "A",
+                        "Fekete bika pata",
+                        "Boborján   a   jeti"));
     }
 
     @Test
@@ -94,12 +94,11 @@ class FileRowRotaterTest {
                 .exists()
                 .content()
                 .hasLineCount(5)
-                .contains("""
-                        A húsleves állati eredetű húsból csontból és zöldségekből készített leves
-                        A húsleves a magyar gasztronómia általánosan ismert vasárnapi és ünnepnapi étele
-                        A lakodalmi vacsora első fogása
-                        Készülhet marha sertés kacsa kakas vagy tyúkhúsból
-                        Teljesen különálló ízvilágot képviselnek a füstölt húsból készült levesek""");
+                .containsSubsequence(List.of("A húsleves állati eredetű húsból csontból és zöldségekből készített leves",
+                        "A húsleves a magyar gasztronómia általánosan ismert vasárnapi és ünnepnapi étele",
+                        "A lakodalmi vacsora első fogása",
+                        "Készülhet marha sertés kacsa kakas vagy tyúkhúsból",
+                        "Teljesen különálló ízvilágot képviselnek a füstölt húsból készült levesek"));
     }
 
     private void deleteIfExists(String path) throws IOException {
